@@ -1,39 +1,43 @@
-<div class="container-fluid">
-    <div class="row ms-4">
-         <div class="col-sm-3-ms-4"></div>
-        <div class="col-lg-12">
-            <div class="card mt-5">
-                <div class="card-header">
-                    Seller 
-                </div>
-                <div class="card-body">
-                    <div class="alert alert-primary mb-4" *ngIf="successMsg">
-                        {{successMsg}}
-                    </div>
-                    <div class="alert alert-danger mb-4" *ngIf="errorMsg">
-                        {{errorMsg}}
-                    </div>
-                    <div class="mb-4">
-                        <label>Enter UserId: </label>
-                        <input type="text" class="form-control" [(ngModel)]="UserId">
-                    </div>
-                    <div class="mb-4">
-                        <label>Enter Name: </label>
-                        <input type="text" class="form-control" [(ngModel)]="name">
-                    </div>
-                    <div class="mb-4">
-                        <label>Enter ContactInfo: </label> 
-                        <input type="text" class="form-control" [(ngModel)]="contactInfo">
-                    </div>
-                    <div class="mb-4">
-                        <label>Enter Location: </label>
-                        <input type="text" class="form-control" [(ngModel)]="location">
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary" (click)="onContinue()">Continue</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<nav >
+  
+  <!-- <div class="sidebar d-flex flex-column flex-shrink-0 p-1 bg-body-tertiary"> -->
+      <ul class="mcd-menu">
+        <li class="nav-item">
+            <a [routerLink]="['dashboard']" class="nav-link link-body-emphasis" [ngClass]="getClassSeller()" (mouseover)="linkClick('seller')">
+                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                Seller
+            </a>
+        </li>
+          <li class="nav-item">
+              <a [routerLink]="['onlineEvaluation']" class="nav-link link-body-emphasis" [ngClass]="getClassOnline()" (mouseover)="linkClick('onlineEvaluation')">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                  Online Evaluation
+              </a>
+          </li>
+          <li class="nav-item">
+              <a [routerLink]="['doorStepInspection']" class="nav-link link-body-emphasis" [ngClass]="getClassDoorStep()" (mouseover)="linkClick('door-stepInspection')">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                  DoorStep Inspection
+              </a>
+          </li>
+          <li class="nav-item">
+              <a [routerLink]="['document']" class="nav-link link-body-emphasis" [ngClass]="getClassDocument()" (mouseover)="linkClick('document')">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                  Document
+              </a>
+          </li>
+          <li class="nav-item">
+              <a [routerLink]="['payment']" class="nav-link link-body-emphasis" [ngClass]="getClassPayment()" (mouseover)="linkClick('payment')">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                  Payment
+              </a>
+          </li>
+          <li class="nav-item">
+              <a [routerLink]="['pickup']" class="nav-link link-body-emphasis" [ngClass]="getClassPickup()" (mouseover)="linkClick('pickup')">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                  Pickup
+              </a>
+          </li>
+      </ul>
+  
+</nav>

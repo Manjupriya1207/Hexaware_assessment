@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { SellerSidebarComponent } from "../seller-sidebar/seller-sidebar.component";
 
 @Component({
   selector: 'app-seller-navbar',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './seller-navbar.component.html',
   styleUrl: './seller-navbar.component.css'
 })

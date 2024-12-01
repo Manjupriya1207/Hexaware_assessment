@@ -7,12 +7,28 @@ import { Observable } from "rxjs";
 })
 export class SellerService{
   
-    private sellercontinueApi = 'http://localhost:8081/seller';
-    private UserApi='http://localhost:8081/auth/user';
+    private sellercontinueApi = 'http://localhost:8081/seller/add';
 
     constructor(private httpClient: HttpClient){}
-    sellercontinue(seller: any) : Observable<any>{
-        return this.httpClient.post(this.sellercontinueApi,seller);
-        // return this.httpClient.post(`${this.sellercontinueApi}?userId=${userId}`, body, { headers });
+    
+      public sellercontinue(obj: any) :Observable<any>{
+        let postObj = {
+          name: obj.name,
+          contactInfo: obj.contactInfo,
+          location: obj.location,
+          user:{
+               userid: obj.userid,
+               username: obj.username,
+               password: obj.password,
+          }
+        };
+      
+    
+        const httpOptions = {
+          headers: new HttpHeaders({
+             Authorization: 'Bearer '+ localStorage.getItem('token')
+          })
+        };
+         return this.httpClient.post(this.sellercontinueApi,postObj,httpOptions)
       }
 }

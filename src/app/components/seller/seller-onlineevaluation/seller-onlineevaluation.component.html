@@ -1,0 +1,210 @@
+<div class="container ">
+    <div class="row ">
+      <div class="col-md-12">
+        <form [formGroup]="onlineEvaluationForm" (ngSubmit)="onFormSubmit()">
+          <div class="card">
+            <div class="card-header text-center bg-primary text-white">
+              <h4>Online Evaluation</h4>
+            </div>
+            <div class="card-body">
+              <!-- Success and Error Messages -->
+              <div class="alert alert-primary mb-4" *ngIf="successMsg">
+                {{ successMsg }}
+              </div>
+              <div class="alert alert-danger mb-4" *ngIf="errorMsg">
+                {{ errorMsg }}
+              </div>
+              <div class="row">
+
+              <!-- Form Fields -->
+              <div class="col-md-6">
+              <div class="mb-4">
+                <label>Enter Brand:</label>
+                <select id="inputState" class="form-select" formControlName="Brand" (keyup)="resetMsg()">
+                  <option value="Hyundai">Hyundai</option>
+                  <option value="Honda">Honda</option>
+                  <option value="Tata">Tata</option>
+                  <option value="Rolls-Royce">Rolls-Royce</option>
+                  <option value="Toyota">Toyota</option>
+                  <option value="Mahindra">Mahindra</option>
+                  <option value="Kia">Kia</option>
+                  <option value="Volkswagen">Volkswagen</option>
+                  <option value="MG">MG</option>
+                  <option value="Renault">Renault</option>
+                  <option value="Skoda">Skoda</option>
+                  <option value="BMW">BMW</option>
+                  <option value="Jeep">Jeep</option>
+                  <option value="Maruti">Maruti</option>
+                  <option value="Audi">Audi</option>
+                  <option value="Ford">Ford</option>
+                  <option value="Nissan">Nissan</option>
+                  <option value="Mahindra Renault">Mahindra Renault</option>
+                </select>
+                <span *ngIf="onlineEvaluationForm.controls['Brand'].touched && onlineEvaluationForm.controls['Brand'].invalid">
+                  <small *ngIf="onlineEvaluationForm.controls['Brand'].errors?.['required']" class="text-danger">brand is mandatory</small>
+                </span>
+              </div>
+              
+
+              <div class="mb-4">
+                <!-- Brand Dropdown -->
+                <label for="carBrand">Select Car Brand:</label>
+                <select id="carBrand" class="form-control" [(ngModel)]="selectedBrand" (change)="onBrandChange()">
+                  <option value="" disabled selected>Select Brand</option>
+                  <option *ngFor="let brand of carBrands" [value]="brand">{{ brand }}</option>
+                </select>
+              
+                <!-- Model Dropdown -->
+                <div class="mt-3">
+                  <label for="carModel">Select Model:</label>
+                  <select id="carModel" class="form-control" [(ngModel)]="selectedModel">
+                    <option value="" disabled selected>Select Model</option>
+                    <option *ngFor="let model of carModels" [value]="model">{{ model }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label>Enter RtoLocation:</label>
+                <select id="inputState" class="form-select" formControlName="RtoLocation" (keyup)="resetMsg()">
+                  <option value="Ahmedabad">Ahmedabad</option>
+                  <option value="Bangalore">Bangalore</option>
+                  <option value="Chandigarh">Chandigarh</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Gurgaon">Gurgaon</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Jaipur">Jaipur</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="New Delhi">New Delhi</option>
+                  <option value="Noida">Noida</option>
+                  <option value="Pune">Pune</option>
+                  <option value="BMW">BMW</option>
+                  <option value="Jeep">Jeep</option>
+                  <option value="Maruti">Maruti</option>
+                  <option value="Audi">Audi</option>
+                  <option value="Ford">Ford</option>
+                  <option value="Nissan">Nissan</option>
+                  <option value="Mahindra Renault">Mahindra Renault</option>
+                </select>
+                <span *ngIf="onlineEvaluationForm.controls['RtoLocation'].touched && onlineEvaluationForm.controls['RtoLocation'].invalid">
+                  <small *ngIf="onlineEvaluationForm.controls['RtoLocation'].errors?.['required']" class="text-danger">RtoLocation is mandatory</small>
+                </span>
+              </div>
+
+              
+              <div class="mb-4">
+                <label for="ManufacturingYear">Enter Manufacturing Year:</label>
+                <select id="ManufacturingYear" class="form-control" formControlName="ManufacturingYear" (keyup)="resetMsg()">
+                  
+                  <option value="2000">2000</option>
+                  <option value="2001">2001</option>
+                  <option value="2002">2002</option>
+                  <option value="2003">2003</option>
+                  <option value="2004">2004</option>
+                  <option value="2005">2005</option>
+                  <option value="2006">2006</option>
+                  <option value="2007">2007</option>
+                  <option value="2008">2008</option>
+                  <option value="2009">2009</option>
+                  <option value="2010">2010</option>
+                  <option value="2011">2011</option>
+                  <option value="2012">2012</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                </select>
+                <span *ngIf="onlineEvaluationForm.controls['ManufacturingYear'].touched &&onlineEvaluationForm.controls['ManufacturingYear'].invalid">
+                  <small *ngIf="onlineEvaluationForm.controls['ManufacturingYear'].errors?.['required']"class="text-danger">
+                    Year is mandatory
+                  </small>
+                </span>
+              </div>
+
+
+              <div class="mb-4">
+                <label for="model">Enter Model:</label>
+                <select class="form-select" formControlName="Model" (change)="resetMsg()" id="Model">
+                  <option value="" disabled>Select Model</option>
+                  <option *ngFor="let model of models" [value]="model">{{ model }}</option>
+                </select>
+                <span *ngIf="onlineEvaluationForm.controls['Model'].touched && onlineEvaluationForm.controls['Model'].invalid">
+                  <small *ngIf="onlineEvaluationForm.controls['Model'].errors?.['required']" class="text-danger">Model is mandatory</small>
+                </span>
+              </div>
+              
+     
+              
+           
+
+            
+              <div class="mb-4">
+                <label for ="variant">Enter Variant:</label>
+                <input type="text" class="form-control" formControlName="Variant" (input)="resetMsg()" id="variant">
+                <span *ngIf="onlineEvaluationForm.controls['Variant'].touched && onlineEvaluationForm.controls['Variant'].invalid">
+                  <small *ngIf="onlineEvaluationForm.controls['Variant'].errors?.['required']" class="text-danger">Variant is mandatory</small>
+                </span>
+              </div>   
+              </div> 
+          
+        
+          <div class="col-md-6">
+            <div class="mb-4">
+              <label for="kmDriven">Enter KmDriven:</label>
+              <input type="number" class="form-control" formControlName="KmDriven" (input)="resetMsg()" id="kmDriven">
+              <span *ngIf="onlineEvaluationForm.controls['KmDriven'].touched && onlineEvaluationForm.controls['KmDriven'].invalid">
+                <small *ngIf="onlineEvaluationForm.controls['KmDriven'].errors?.['required']" class="text-danger">KmDriven is mandatory</small>
+              </span>
+            </div>
+       
+            <div class="mb-4">
+              <label for="carOwnership">Car Ownership:</label>
+              <select class="form-select" formControlName="carOwnership" (change)="resetMsg()" id="carOwnership">
+                <option value="" disabled>Select Ownership Type</option>
+                <option value="First Owner">First Owner</option>
+                <option value="Second Owner">Second Owner</option>
+                <option value="Third Owner">Third Owner</option>
+                <option value="Fourth Owner">Fourth Owner</option>
+                <option value="Fifth Owner">Fifth Owner</option>
+              </select>
+              <span *ngIf="onlineEvaluationForm.controls['carOwnership'].touched && onlineEvaluationForm.controls['carOwnership'].invalid">
+                <small *ngIf="onlineEvaluationForm.controls['carOwnership'].errors?.['required']" class="text-danger">Car Ownership is mandatory</small>
+              </span>
+            </div>
+
+            <div class="mb-4">
+              <label for="userLocation">User  Location:</label>
+              <input type="text" class="form-control" formControlName="userLocation" (input)="resetMsg()" id="userLocation">
+              <span *ngIf="onlineEvaluationForm.controls['userLocation'].touched && onlineEvaluationForm.controls['userLocation'].invalid">
+                <small *ngIf="onlineEvaluationForm.controls['userLocation'].errors?.['required']" class="text-danger">User  Location is mandatory</small>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+          
+        
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary" [disabled]="onlineEvaluationForm.invalid">SUBMIT</button>
+            </div>
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
